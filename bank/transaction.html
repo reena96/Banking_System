@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Account | BOH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script>
+
+ 
+ 
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Bank of Hyderabad</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      
+      <ul class="nav navbar-nav navbar-right">
+	    <li><a href="home.html">Home</a></li>
+        <li><a href="open_account.html">Open an account</a></li>
+        <li  class="active"><a href="transaction.html">Make a transaction</a></li>
+		<li><a href="close_account.html">Close your account</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <br><br><br>
+<center>  
+
+<div class="container">
+<form action="Transaction" method="get" class="form-horizontal">
+
+ 
+<div class="panel panel-danger">
+<div class="panel-heading">
+<font color="black"><h4>Transaction Details</h4>
+ </font> 
+</div>
+<div class="panel body">
+<br>
+ 
+ <!-- transaction_type  |  account_number  |  amount  |  pan_number  |  mobileno
+ -->
+ 
+<div class="form-group">
+<label for="transaction_type" class="control-label col-sm-5 label_a">Choose Transaction type:</label>    
+	<div class="col-sm-offset-0 col-sm-3">
+<select class="form-control" id="transaction_type" name="transaction_type">
+<option value="withdrawal">Withdrawal</option>
+<option value="deposit">Deposit</option>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label for="name" class="control-label col-sm-5">Account no:</label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="account_number" name="account_number" size="30" placeholder="Enter  your account number:">
+</div>
+</div>
+
+<div class="form-group">
+<label for="name" class="control-label col-sm-5">Amount:</label>
+<div class="col-sm-3">
+<input type="number" class="form-control" id="amount" name="amount" size="30" placeholder="Enter amount:">
+</div>
+</div>
+
+<div class="form-group">
+<label for="name" class="control-label col-sm-5">Pan Card no:</label>
+<div class="col-sm-3">
+<input type="number" class="form-control" id="pan_number" name="pan_number" size="30" placeholder="Enter your pan card number:">
+</div>
+</div>
+
+<div class="form-group">
+<label for="mobileno" class="control-label col-sm-5">Mobile Number:</label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="mobileno" name="mobileno" size="30" placeholder="Enter your mobile number">
+</div>
+</div>
+
+
+ 
+
+
+
+
+
+<div id="addDelButtons">
+                <input type="button" id="btnAdd" class="btn btn-md btn-warning" value="add account holder" "add section"> <input type="button" id="btnDel" class="btn btn-md btn-danger" value="remove account holder">
+            </div>
+			<br>
+
+			
+<div class="form-group">        
+<div class="col-sm-offset-5 col-sm-2">
+<button type="reset" class="btn btn-primary">Clear</button>
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+</div>
+
+
+</div><!--  panel body closing -->
+</div> <!-- panel closing -->
+
+
+
+
+</form>
+
+</div> <!-- container closing -->
+</center>
+</body>
+</html>

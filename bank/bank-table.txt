@@ -1,0 +1,104 @@
+mysql> create database bank;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use bank;
+Database changed
+
+(individual/joint,account_type,pname,dob,gender,email,mobile,current_address,username,password,confirm_password,agree
+User registers and opens an account and at the same time, user also chooses a user name and password. One user opens an account, he is provided with a account number by the BANK. The Bank only should generate an account number which is used to link with his account information.
+So, everytime (after the user has opened an account and registered with the bank) ,
+The user has to login. The user activity should be displayed.
+Then the user can make transactions.  
+SO, TO MAKE TRANSACTIONS AND TO CLOSE THE ACCOUNT, USER HAS TO LOGIN. If not logged in, these two features should be locked.
+On closing account, the row should be deleted from customer and cascaded to all the rows.
+On making transaction, the row should be updated in transaction and  balance should be updated in all the rows.
+On opening account, account number should be generated.
+Dates should be given as sysdate when required.)
+
+
+
+mysql> create table customer
+    -> (
+    -> cid int(5) not null AUTO_INCREMENT,
+    -> pname varchar(50) not null,
+    -> dob date not null,
+    -> gender varchar(5) not null,
+    -> email varchar(70) default null,	
+    -> mobile int(15) not null,
+    -> current_address varchar(200) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null,	
+	-> date_created date not null,
+    -> date_modified date not null,
+    -> created_by varchar(20) not null,
+    -> modified_by varchar(20) not null,
+    -> primary key(cid),
+    -> CHECK
+    ->  (  
+    ->    age>18 and age<150
+    ->    and
+    ->    dob between date '1865-01-01' and SYSDATE
+    ->    and
+    ->    date_modified>=date_created
+    ->    and 
+    ->    date_created between date '2000-01-01' and SYSDATE
+    ->  )
+    -> );
+
+
+//individual_joint,account_type,pname,dob,gender,email,mobile,current_address,username,password,confirm_password,agree
+
+mysql> create table account
+    -> (
+	-> account_number varchar(30) not null,
+	-> individual_joint varchar(30) not null,
+    -> account_type varchar(30) not null,
+    -> bal double(20) not null,
+    -> cid varchar(5) not null,
+    -> cid2 varchar(5) default null,
+    -> cid3 varchar(5) default null,
+    -> cid4 varchar(5) default null,
+    -> acc_date_created date not null,
+    -> acc_date_modified date not null,
+    -> primary key(acno),
+    -> foreign key(cid) references customer(cid) ON DELETE CASCADE ON UPDATE NO ACTION,
+    -> CHECK
+    ->  ( 
+    ->    bal<=99999999999999999999
+    ->    and
+    ->    individual_joint in ('Individual','Joint')
+    ->    and
+    ->    account_type in ('Current','Savings','Recurring Deposit','Fixed Deposit')
+    ->    and
+    ->    acc_date_modified>=acc_date_created
+    ->    and
+    ->    date_created between date '2000-01-01' and SYSDATE
+    ->  )
+    -> );
+
+
+
+ // transaction_type  |  account_number  |  amount  |  pan_number  |  mobileno 
+
+mysql> create table transaction
+    -> (
+    -> transaction_no varchar(5) not null,
+    -> transaction_type varchar(10) not null,
+    -> amount int(20) not null,
+	-> pan_number int(25) not null,
+    -> transaction_date date not null,
+    -> cid varchar(3) default null,acno int(5) not null,
+    -> primary key(transaction_no),
+    -> foreign key(cid) references customer(cid) ON DELETE CASCADE ON UPDATE NO ACTION,
+    -> foreign key(acno) references account(acno),
+    -> CHECK
+    ->   (
+    ->     transaction_type in ('Withdrawal','Deposit')
+    ->     and 
+    ->     transaction_amt<25000
+    ->   )
+    -> );
+
+
+
+mysql> notee;

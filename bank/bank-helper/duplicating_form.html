@@ -1,0 +1,71 @@
+<html>
+<head>
+<title></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $( '#btnAdd' ).click( function() {
+        var num = $( '.clonedInput' ).length;      // how many "duplicatable" input fields we currently have
+        var newNum  = new Number( num + 1 );        // the numeric ID of the new input field being added
+        var newElem = $( '#container' + num ).clone().attr( 'id', 'container' + newNum );
+
+		newElem.find('.heading-reference').attr('id', 'ID' + newNum + '_reference').attr('name', 'ID' + newNum + '_reference').html('Entry #' + newNum).val('');
+		
+        newElem.children( ':first' ).attr( 'id', 'name' + newNum ).attr( 'name', 'name' + newNum ).val('');
+        $( '#container' + num ).after( newElem );
+        $( '#btnDel' ).attr( 'disabled', false );
+        if ( newNum == 3)
+            $( '#btnAdd' ).attr( 'disabled', 'disabled' );
+    });
+
+    $( '#btnDel' ).click( function() {
+        var num = $( '.clonedInput' ).length;      // how many "duplicatable" input fields we currently have
+        $( '#container' + num ).remove();              // remove the last element
+        $( '#btnAdd' ).attr( 'disabled', false );  // enable the "add" button
+
+        // if only one element remains, disable the "remove" button
+        if ( num-1 == 1 )
+            $( '#btnDel' ).attr( 'disabled', 'disabled' );
+    });
+
+    $( '#btnDel' ).attr( 'disabled', 'disabled' );
+});
+        </script>
+</head>
+
+<body>
+<form id="myForm">
+    <div id="container1" class="clonedInput"> 
+	<div class="panel panel-danger">
+	<div class="panel-heading">
+<font color="black"><h4>Account Details</h4>
+ </font> 
+</div>
+<div class="panel body">
+<br>
+	 <h2 id="reference" name="reference" class="heading-reference">Entry #1</h2>
+        <div>
+        First Name:
+        <input type="text" name="first_name1" id="first_name1">
+        </div>
+        <div>
+        Last Name:
+        <input type="text" name="last_name1" id="last_name1">
+        </div>
+        <div>
+        Phone:
+        <input type="text" name="phone1" id="phone1">
+        </div>	
+		</div>
+		</div>
+    </div>
+
+			<div>
+        <input type="button" id="btnAdd" value="add another name" />
+        <input type="button" id="btnDel" value="remove name" />
+    </div>
+	
+	
+</form>
+</body>
+</html>

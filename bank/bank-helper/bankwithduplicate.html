@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Account | BOH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script>
+   $(document).ready(function(){
+    $( '#btnAdd' ).click( function() {
+  noC = 3;
+for(i= 0; i < noC;i++) {
+    $("#panel").append(function(){     
+        return $("#panel").find('div').length==0?$(this).clone(): $("#panel").find('div:first').clone();
+    });
+}
+});
+});
+
+</script>		
+			
+		<body>
+		<div id="panel" style="display:inline; float:left;position: relative; width: 140px; height: 200px;  border:solid 2px; border-color: red;cursor: pointer;"></div>
+		<div id
+		<input type="button" id="btnAdd">Click me</button>
+
+        </body>
+</html>		

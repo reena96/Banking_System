@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | BOH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="bank.html">Bank of Hyderabad</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      
+      <ul class="nav navbar-nav navbar-right">
+	    <li class="active"><a href="home.html">Home</a></li>
+        <li><a href="open_account.html">Open an account</a></li>
+        <li><a href="transaction.html">Make a transaction</a></li>
+		<li><a href="close_account.html">Close your account</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <br><br><br>
+  
+<div class="container">
+<center>
+<div class="panel panel-info">
+<div class="panel-heading">
+<font color="black"><h4>Already registered with Bank of Hyderabad?  Sign in now. </h4>
+ </font> 
+</div>
+<div class="panel body">
+<br>
+<form action="Login" method="get" class="form-horizontal">
+
+<div class="form-group">
+<label for="name" class="control-label col-sm-5">Username:</label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="name" name="name" size="30" placeholder="Enter username">
+</div>
+</div>
+
+<div class="form-group">
+<label for="password" class="control-label col-sm-5">Password:</label>
+<div class="col-sm-3">
+<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" size="30">
+</div>
+</div>
+
+
+<div class="col-sm-offset-4 col-sm-4">
+<div class="panel panel-danger">
+      <div class="panel-heading"style="color: #FF0000;">${errorMessage}</div>
+</div>
+</div>
+<br><br><br><br>
+<div class="form-group">        
+<div class="center">
+<button type="submit" class="btn btn-success">Sign in</button>
+</div>
+</div>
+</div>
+  
+<br><br>
+
+</form>
+
+</center>
+</div>
+</div>
+
+</body>
+</html>

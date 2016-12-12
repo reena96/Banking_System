@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Account | BOH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+<script>
+$(document).ready(function(){
+    $('#btnAdd').click(function () {
+        var num     = $('.clonedInput').length, // how many "duplicatable" input fields we currently have
+            newNum  = new Number(num + 1),     // the numeric ID of the new input field being added
+            newElem = $('#entry' + num).clone().attr('id', 'entry' + newNum).fadeIn('slow'); // create the new element via clone(), and manipulate it's ID using newNum value
+			
+// manipulate the name/id values of the input inside the new element
+
+    // H2 - section
+        newElem.find('.heading-reference').attr('id', 'ID' + newNum + '_reference').attr('name', 'ID' + newNum + '_reference').html('Entry #' + newNum);
+
+    // name section
+	    newElem.find('.label_pname').attr('for', 'ID' + newNum + '_pname');
+	    newElem.find('.input_pname').attr('id', 'ID' + newNum + '_pname').attr('name', 'ID' + newNum + '_pname').val('');
+	   
+	//date of birth
+	    newElem.find('.label_dob').attr('for', 'ID' + newNum + '_dob');
+        newElem.find('.input_dob').attr('id', 'ID' + newNum + '_dob').attr('name', 'ID' + newNum + '_dob').val('');
+		
+	// for the gender
+	    newElem.find('.label_gender').attr('for', 'ID' + newNum + '_gender');
+		newElem.find('.label_female').attr('for', 'ID' + newNum + '_gender');
+		newElem.find('.label_male').attr('for', 'ID' + newNum + '_gender');
+	    newElem.find('.input_gender').attr('id', 'ID' + newNum + '_gender').attr('name', 'ID' + newNum + '_gender').val([]);
+	           
+    //email
+	    newElem.find('.label_email').attr('for', 'ID' + newNum + '_email');
+        newElem.find('.input_email').attr('id', 'ID' + newNum + '_email').attr('name', 'ID' + newNum + '_email').val('');
+		
+	//telemobile/mobile number
+	    newElem.find('.label_mobile').attr('for', 'ID' + newNum + '_mobile');
+        newElem.find('.input_mobile').attr('id', 'ID' + newNum + '_mobile').attr('name', 'ID' + newNum + '_mobile').val('');
+			
+	// cuurent address
+	    newElem.find('.label_current_address').attr('for', 'ID' + newNum + '_current_address');
+        newElem.find('.input_current_address').attr('id', 'ID' + newNum + '_current_address').attr('name', 'ID' + newNum + '_current_address').val('');
+	 
+	// choose username
+	    newElem.find('.label_username').attr('for', 'ID' + newNum + '_username');
+        newElem.find('.input_username').attr('id', 'ID' + newNum + '_username').attr('name', 'ID' + newNum + '_username').val('');
+	
+    // choose password
+	    newElem.find('.label_password').attr('for', 'ID' + newNum + '_password');
+        newElem.find('.input_password').attr('id', 'ID' + newNum + '_password').attr('name', 'ID' + newNum + '_password').val('');
+			
+	// confirm_password
+	    newElem.find('.label_confirm_password').attr('for', 'ID' + newNum + '_confirm_password');
+        newElem.find('.input_confirm_password').attr('id', 'ID' + newNum + '_confirm_password').attr('name', 'ID' + newNum + '_confirm_password').val('');
+			
+    // insert the new element after the last "duplicatable" input field
+        $('#entry' + num).after(newElem);
+        $('#ID' + newNum + '_pname').focus();
+ 
+    // enable the "remove" button
+        $('#btnDel').attr('disabled', false);
+ 
+    // right now you can only add 5 sections. change '5' below to the max number of times the form can be duplicated
+        if (newNum == 4)
+        $('#btnAdd').attr('disabled', true).prop('value', "You've reached the limit");
+    });
+ 
+    $('#btnDel').click(function () {
+    // confirmation
+        if (confirm("Are you sure you wish to remove this section? This cannot be undone."))
+            {
+                var num = $('.clonedInput').length;
+                // how many "duplicatable" input fields we currently have
+                $('#entry' + num).slideUp('slow', function () {$(this).remove(); 
+                // if only one element remains, disable the "remove" button
+                    if (num -1 === 1)
+                $('#btnDel').attr('disabled', true);
+                // enable the "add" button
+                $('#btnAdd').attr('disabled', false).prop('value', "Add Account Holder");});
+            }
+        return false;
+             // remove the last element
+ 
+    // enable the "add" button
+        $('#btnAdd').attr('disabled', false);
+    });
+ 
+    $('#btnDel').attr('disabled', true);
+ 
+});		
+		
+</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Bank of Hyderabad</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      
+      <ul class="nav navbar-nav navbar-right">
+	    <li><a href="home.html">Home</a></li>
+        <li class="active"><a href="open_account.html">Open an account</a></li>
+        <li><a href="transaction.html">Make a transaction</a></li>
+		<li><a href="close_account.html">Close your account</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <br><br><br>
+
+<form action="OpenAccount" method="post" id="myform">		
+
+<div class="panel panel-danger">
+<div class="panel-heading">
+<font color="black"><h4>Account Details</h4>
+ </font> 
+</div>
+ 
+individual/joint,account_type,pname,dob,gender,email,mobile,current-address,username,password,confirm_password
+
+<div class="panel body">
+
+	<!-- Check id's for individual and joint as they are different. See what works. See if Gender(radio id's used for gender works or radio id's used for this works with the database properly)    -->
+    <div class="form-group">
+        <label for="individual_joint" class="control-label col-sm-5 label_ij">Choose Account:</label>
+        <div class="col-sm-3">
+            <label for="individual" class="control-label col-sm-6">
+            <input type="radio" id="individual" name="individual_joint" value="Individual" class="input_radio_ij">Individual Account</label>
+            <label for="joint" class="control-label col-sm-6">
+            <input type="radio" id="joint" name="individual_joint" value="Joint" class="input_radio_ij">Joint Account</label>
+        </div>
+    </div>
+
+
+<div class="form-group">
+<label for="account_type" class="control-label col-sm-5 label_account_type">Account Type:</label>    
+	<div class="col-sm-offset-0 col-sm-3">
+<select class="form-control input_account_type" id="account_type" name="account_type">
+<option value="Current">Current Account</option>
+<option value="Savings">Savings Account</option>
+<option value="Recurring_Deposit">Recurring Deposit Account</option>
+<option value="Fixed_Deposit">Fixed Deposit Account</option>
+</select>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+            <div id="entry1" class="clonedInput">
+		
+               <div class="col-sm-8"><h2 id="reference" name="reference" class="heading-reference"><br>Entry #1</h2></div>
+                
+                
+				
+				<div class="form-group">
+<label for="pname" class="control-label col-sm-5 label_pname">Name:</label>
+<div class="col-sm-3">
+<input type="text" class="form-control input_pname" id="pname" name="pname" size="30" placeholder="Enter username">
+</div>
+</div>
+ 
+<div class="form-group">
+<label for="dob" id="label_dob" class="control-label col-sm-5 label_dob">Date of Birth:</label>    
+	<div class="col-sm-3">
+<input type="date" class="form-control input_dob" id="dob" name="dob">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="gender" id="label_gender" class="control-label col-sm-5 label_gender">Gender:</label>
+<div class="col-sm-3">
+<label for="gender" id="label_female" class="control-label col-sm-6 label_female">
+<input type="radio" class="input_gender" id="gender" name="gender" value="Female">Female</label>
+<label for="gender" id="label_male" class="control-label col-sm-6 label_male">
+<input type="radio" class="input_gender" id="gender" name="gender" value="Male">Male</label>
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="email" id="label_dob" class="control-label col-sm-5 label_email">Email Addresss:</label>
+<div class="col-sm-3">
+ <input type="email" class="form-control input_email" id="email" name="email" size="40" placeholder="Enter your email address">
+ </div>
+</div>
+
+<div class="form-group">
+<label for="mobile" id="label_mobile" class="control-label col-sm-5 label_mobile">Mobile number:</label>
+<div class="col-sm-3">
+ <input type="tel" class="form-control input_mobile" id="mobile" name="mobile" size="15" placeholder="Enter your mobile number">
+ </div>
+</div>
+	
+	
+<div class="form-group">
+<label for="current-address" id="label_current_address" class="control-label col-sm-5 label_current_address">Current Address:</label>
+<div class="col-sm-3">
+<input type="text" class="form-control input_current_address" id="current_address" name="current_address" size="200" placeholder="Enter your current location" >
+</div>
+</div>
+
+<div class="form-group">
+<label for="username" id="label_username" class="control-label col-sm-5 label_username">Choose username: (email or a name)</label>
+<div class="col-sm-3">
+<input type="text" class="form-control input_username" id="username" name="username" size="30" placeholder="Enter username">
+</div>
+</div>
+
+<div class="form-group">
+<label for="password" id="label_password" class="control-label col-sm-5 label_password">Choose  Password:</label>
+<div class="col-sm-3">
+<input type="password" class="form-control input_password" id="password" name="password" placeholder="Enter password" size="30">
+</div>
+</div>
+
+<div class="form-group">
+<label for="confirm_password" id="label_confirm_password" class="control-label col-sm-5 label_confirm_password">Reconfirm Password:</label>
+<div class="col-sm-3">
+<input type="password" class="form-control input_confirm_password" id="confirm_password" name="confirm_password" placeholder="Enter password again" size="30">
+</div>
+</div>
+
+
+                
+      </div><!-- end #entry1 -->
+	
+			
+			<div class="form-group right">        
+<div class="col-sm-offset-5 col-sm-4">
+                <input type="button" id="btnAdd" class="btn btn-warning" value="add account holder"> <input type="button" id="btnDel" class="btn btn-danger" value="remove account holder">
+            </div>
+			</div>
+			<br>
+
+<div class="form-group">  
+<div class="col-sm-offset-5 col-sm-3">
+<div class="checkbox">
+<label class><input type="checkbox" id="agree"> I agree that this information is correct to the best of my knowledge.</label>
+</div>
+</div>
+</div>
+
+			
+<div class="form-group">        
+<div class="col-sm-offset-5 col-sm-2">
+<button type="reset" class="btn btn-primary">Clear</button>
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+</div>
+		  
+</form>			
+	
+    
+		</body>
+		</html>
